@@ -17,11 +17,12 @@
         </div>
     </div>
 </div>
-<!-- signup form -->
+<!-- signup form with reactiveForm-->
 <div class="row" *ngIf="!alreadyHaveAccount && !forgotPassword">
     <div class="col-md-8 offset-md-2">
         <div class="card shadow-lg">
             <div class="card-body">
+                <h2>Sign Up</h2>
                 <p>
                     To get started, please provide the information below. Clicking on "Continue" will automatically create a login/password on this system for you. (We will not spam you. Your email address will only be used to communicate with you regarding this activity.)
                 </p>
@@ -86,7 +87,7 @@
         </div>
     </div>
 </div>
-<!-- login form -->
+<!-- login form TD form-->
 <div class="row" *ngIf="alreadyHaveAccount && !forgotPassword">
     <div class="col-md-8 offset-md-2">
         <div class="card shadow-lg">
@@ -135,7 +136,7 @@
     </div>
 </div>
 
-<!-- forgot password -->
+<!-- forgot password TD Form -->
 <div class="row" *ngIf="forgotPassword">
     <div class="col-md-8 offset-md-2">
 
