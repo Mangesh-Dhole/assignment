@@ -1,0 +1,166 @@
+<div class="row mb-4" *ngIf="!forgotPassword">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <p class="mb-0">
+                    Returning User? Already registered? 
+                    <a (click)="alreadyHaveAccount = !alreadyHaveAccount" class="click-here">
+                        Click here
+                    </a>
+                </p>
+
+                    <p class="mb-0">
+
+                        If this is the first time you're coming to this site, fill in the details below.
+                    </p>
+            </div>
+        </div>
+    </div>
+</div>
+<!-- signup form -->
+<div class="row" *ngIf="!alreadyHaveAccount && !forgotPassword">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <p>
+                    To get started, please provide the information below. Clicking on "Continue" will automatically create a login/password on this system for you. (We will not spam you. Your email address will only be used to communicate with you regarding this activity.)
+                </p>
+
+                <div class="row">
+                    <div class="col-md-6">
+                        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+                            <div class="form-group">
+                                <label for="" class="label">First Name</label>
+                                <input type="text" class="form-control" formControlName="fname">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">Last name</label>
+                                <input type="text" class="form-control" formControlName="lname">
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">Create username*</label>
+                                <input type="text" class="form-control" formControlName="userName" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">E-mail*</label>
+                                <input type="text" class="form-control" formControlName="email" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                                <p  class="text-danger" *ngIf="signUpForm.get('email')?.dirty && signUpForm.get('email')?.hasError('pattern')">
+                                    Please Enter valid email Id
+                                </p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">Password*</label>
+                                <input type="text" class="form-control" formControlName="password" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                            </div>
+
+                            <div class="form-group">
+                                <label for="" class="label">Password confirmation*</label>
+                                <input type="text" class="form-control" formControlName="cPassword" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('cPassword')?.touched && signUpForm.get('cPassword')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                                <p *ngIf="signUpForm.get('cPassword')?.value !== signUpForm.get('password')?.value">
+                                    Enter the same password as before, for verification.
+                                </p>
+                            </div>
+
+                            <button class="btn btn-primary">Continue</button>
+                        </form>
+                    </div>
+                </div>
+               
+            </div>
+        </div>
+    </div>
+</div>
+<!-- login form -->
+<div class="row" *ngIf="alreadyHaveAccount && !forgotPassword">
+    <div class="col-md-8 offset-md-2">
+        <div class="card">
+            <div class="card-body">
+                <h2>Login</h2>
+                <div class="row mb-3">
+                    <div class="col-md-6">
+                        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+                            <div class="form-group">
+                                <label for="" class="label">Create username*</label>
+                                <input type="text" class="form-control" formControlName="userName" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                            </div>
+                            <div class="form-group">
+                                <label for="" class="label">Password*</label>
+                                <input type="text" class="form-control" formControlName="password" title="please fill out this field* ">
+                                <p  class="text-danger" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('required')">
+                                    this field is mandatory
+                                </p>
+                            </div>
+                            <button class="btn btn-primary">Login</button>
+                        </form>
+                    </div>
+                </div>
+                
+                <div class="row">
+                    <div class="col-12">
+                        <h5>
+                            Don't have a login?
+                        </h5>
+
+                        <p>This is an invitation-only site. You can only log in if you have received an invitation from one of our companies. If you have received an invitation, then please use the invitation link to log into the system. You cannot log into this system from this page. You must find the original email and click on the invitation link.</p>
+
+
+                        <h5>
+                            Returning Users
+                        </h5>
+
+                        <p>If you already logged into this system earlier, then use the username/password to login. If you forgot the username or the password that you created earlier, <a class="click-here" (click)="forgotPassword  = true">click here</a> to request a password reset link (you'll need to remember the email address you used).</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </div>
+</div>
+
+<!-- forgot password -->
+<div class="row" *ngIf="forgotPassword">
+    <div class="col-md-8 offset-md-2">
+
+        <div class="card">
+            <div class="card-body">
+                <h2>
+                    Password Reset
+                </h2>
+                <p>
+                    Please fill in this information, and a password reset link will be sent to the email address you registered with us. Clicking on this link will allow you to reset your password and create a new one.
+                </p>
+
+                <div class="form-group">
+                    <label for="" class="label">E-mail*</label>
+                    <input type="text" class="form-control" formControlName="email" title="please fill out this field* ">
+                    <p  class="text-danger" *ngIf="signUpForm.get('email')?.touched && signUpForm.get('email')?.hasError('required')">
+                        this field is mandatory
+                    </p>
+                    <p  class="text-danger" *ngIf="signUpForm.get('email')?.dirty && signUpForm.get('email')?.hasError('pattern')">
+                        Please Enter valid email Id
+                    </p>
+                </div>
+
+                <button class="btn btn-primary">Submit</button>
+            </div>
+        </div>
+    </div>
+</div>
