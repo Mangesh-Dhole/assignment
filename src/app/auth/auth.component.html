@@ -95,18 +95,18 @@
                 <h2>Login</h2>
                 <div class="row mb-3">
                     <div class="col-md-6">
-                        <form [formGroup]="signUpForm" (ngSubmit)="onSignUp()">
+                        <form  #loginForm="ngForm" (ngSubmit)="onLoginUser(loginForm)">
                             <div class="form-group">
                                 <label for="" class="label">Create username*</label>
-                                <input type="text" class="form-control" formControlName="userName" title="please fill out this field* ">
-                                <p  class="text-danger" *ngIf="signUpForm.get('userName')?.touched && signUpForm.get('userName')?.hasError('required')">
+                                <input type="text" class="form-control" name="userName" title="please fill out this field* " ngModel #user="ngModel" required>
+                                <p  class="text-danger" *ngIf="user?.touched && user?.hasError('required')">
                                     this field is mandatory
                                 </p>
                             </div>
                             <div class="form-group">
                                 <label for="" class="label">Password*</label>
-                                <input type="text" class="form-control" formControlName="password" title="please fill out this field* ">
-                                <p  class="text-danger" *ngIf="signUpForm.get('password')?.touched && signUpForm.get('password')?.hasError('required')">
+                                <input type="text" class="form-control" name="password" title="please fill out this field* " ngModel #pass="ngModel" required>
+                                <p  class="text-danger" *ngIf="pass?.touched && pass?.hasError('required')">
                                     this field is mandatory
                                 </p>
                             </div>

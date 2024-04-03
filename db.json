@@ -1,0 +1,39 @@
+{
+  "posts": [
+    {
+      "id": 1,
+      "title": "json-server",
+      "author": "typicode"
+    }
+  ],
+  "users": [
+    {
+      "fname": "Mangesh",
+      "lname": "Dhole",
+      "userName": "mangesh",
+      "email": "dholem77@gmail.com",
+      "password": "12345",
+      "cPassword": "12345",
+      "id": 1
+    },
+    {
+      "fname": "Mangesh",
+      "lname": "Dhole",
+      "userName": "mangeshd",
+      "email": "dholem7@gmail.com",
+      "password": "123",
+      "cPassword": "123",
+      "id": 2
+    }
+  ],
+  "comments": [
+    {
+      "id": 1,
+      "body": "some comment",
+      "postId": 1
+    }
+  ],
+  "profile": {
+    "name": "typicode"
+  }
+}
